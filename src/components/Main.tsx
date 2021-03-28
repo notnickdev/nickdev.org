@@ -7,6 +7,7 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaKeybase } from "react-icons/fa";
+import SpotifyCard from "./SpotifyCard";
 
 const MainContainer = styled.div`
   margin: 0 auto;
