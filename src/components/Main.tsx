@@ -7,7 +7,73 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaKeybase } from "react-icons/fa";
-import SpotifyCard from "./SpotifyCard";
+interface MainProps {
+  twitter: string;
+  github: string;
+  linkedin: string;
+  email: string;
+  keybase: string;
+}
+
+const Main: React.FunctionComponent<MainProps> = (props) => {
+  const styles = {
+    color: "#695779",
+  };
+
+  return (
+    <MainContainer>
+      <MainImage src={logo} />
+      <Wrapper>
+        <MainTitle>
+          Hey! 👋 I'm{" "}
+          <span
+            style={{
+              color: "#bf30eb",
+            }}
+          >
+            Nicholas.
+          </span>
+        </MainTitle>
+        <MainDescription>
+          {new Date().getFullYear() - 2003} years old Developer
+          <br />
+          Contact:{" "}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={props.twitter}
+            style={styles}
+          >
+            Twitter DM's
+          </a>{" "}
+          -{" "}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={`mailto:${props.email}`}
+            style={styles}
+          >
+            Email
+          </a>
+        </MainDescription>
+        <MainIconsContainer>
+          <MainIcon target="_blank" href={props.twitter}>
+            <AiOutlineTwitter />
+          </MainIcon>
+          <MainIcon target="_blank" href={props.github}>
+            <AiOutlineGithub />
+          </MainIcon>
+          <MainIcon target="_blank" href={props.linkedin}>
+            <AiFillLinkedin />
+          </MainIcon>
+          <MainIcon target="_blank" href={props.keybase}>
+            <FaKeybase />
+          </MainIcon>
+        </MainIconsContainer>
+      </Wrapper>
+    </MainContainer>
+  );
+};
 
 const MainContainer = styled.div`
   margin: 0 auto;
@@ -55,63 +121,5 @@ const MainIcon = styled.a`
     color: #9926bc;
   }
 `;
-
-interface MainProps {
-  twitter: string;
-  github: string;
-  linkedin: string;
-  email: string;
-  keybase: string;
-}
-
-const Main: React.FunctionComponent<MainProps> = (props) => {
-  const styles = {
-    color: "#695779",
-  };
-
-  return (
-    <MainContainer>
-      <MainImage src={logo} />
-      <Wrapper>
-        <MainTitle>
-          Hey! 👋 I'm{" "}
-          <span
-            style={{
-              color: "#bf30eb",
-            }}
-          >
-            Nicholas.
-          </span>
-        </MainTitle>
-        <MainDescription>
-          {new Date().getFullYear() - 2003} years old Developer
-          <br />
-          Contact:{" "}
-          <a target="_blank" href={props.twitter} style={styles}>
-            Twitter DM's
-          </a>{" "}
-          -{" "}
-          <a target="_blank" href={`mailto:${props.email}`} style={styles}>
-            Email
-          </a>
-        </MainDescription>
-        <MainIconsContainer>
-          <MainIcon target="_blank" href={props.twitter}>
-            <AiOutlineTwitter />
-          </MainIcon>
-          <MainIcon target="_blank" href={props.github}>
-            <AiOutlineGithub />
-          </MainIcon>
-          <MainIcon target="_blank" href={props.linkedin}>
-            <AiFillLinkedin />
-          </MainIcon>
-          <MainIcon target="_blank" href={props.keybase}>
-            <FaKeybase />
-          </MainIcon>
-        </MainIconsContainer>
-      </Wrapper>
-    </MainContainer>
-  );
-};
 
 export default Main;

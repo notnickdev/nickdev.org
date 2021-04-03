@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import { useLanyard } from "use-lanyard";
 
 // Components
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import SpotifyCard from "./components/SpotifyCard";
-import { time } from "node:console";
+import ActivityComponent from "./components/Activity";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,59 +18,34 @@ interface StateTypes {
   keybase: string;
 }
 
-interface SpotifyData {
-  data: Object;
-}
+const PRESENCE = 0;
 
 const App = () => {
-  const [socials, setSocials] = useState<StateTypes[] | any>([
+  const socials: StateTypes[] | any = [
     { twitter: "https://twitter.com/notnickdev" },
     { github: "https://github.com/notnickdev" },
     { linkedin: "https://www.linkedin.com/in/nicholas-n-5a9187195/" },
     { email: "thisnotnicholas@gmail.com" },
     { keybase: "https://keybase.io/nick241" },
-  ]);
+  ];
 
-  const [spotifyData, setSpotifyData] = useState<any>({
-    data: null,
-    show: false,
-  });
+  const { data: lanyard } = useLanyard("463449066672619520");
+  const activity = lanyard?.activities.find(
+    (activity) => activity.type === PRESENCE
+  );
+  if (!activity) return null;
 
-  const fetchSpotifyData = () => {
-    axios
-      .get("https://api.lanyard.rest/v1/users/463449066672619520")
-      .then((res: any) => {
-        setSpotifyData({ data: res, show: true });
-      })
-      .catch((error) => setSpotifyData({ data: null, show: false }));
-  };
-
-  useEffect(() => {
-    fetchSpotifyData();
-    setSpotifyData({ show: true });
-  }, []);
-
-  const fetchNewSongData = () => {
-    if (spotifyData.show) {
-      // const timestamp: number =
-      //   spotifyData.data.data.data.spotify.timestamps.end;
-      // var milliSeconds = Math.floor(Date.now() / timestamp);
-      // console.log(milliSeconds);
-    }
-  };
-
-  console.log(spotifyData);
-  fetchNewSongData();
+  console.log(activity);
 
   return (
     <Wrapper>
-      {spotifyData.show && (
-        <SpotifyCard
-          song={spotifyData.data.data.data.spotify.album}
-          artist={spotifyData.data.data.data.spotify.artist}
-          image={spotifyData.data.data.data.spotify.album_art_url}
-        />
-      )}
+      <ActivityComponent
+        activity={activity}
+        name={activity.name}
+        editing={activity.details}
+        state={activity.state}
+        timestamp={activity.timestamps?.start}
+      />
 
       <Main
         twitter={socials[0].twitter}
