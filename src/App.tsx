@@ -33,7 +33,6 @@ const App = () => {
   const activity = lanyard?.activities.find(
     (activity) => activity.type === PRESENCE
   );
-  if (!activity) return null;
 
   return (
     <Wrapper>
