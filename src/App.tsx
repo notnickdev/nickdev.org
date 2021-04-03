@@ -35,17 +35,17 @@ const App = () => {
   );
   if (!activity) return null;
 
-  console.log(activity);
-
   return (
     <Wrapper>
-      <ActivityComponent
-        activity={activity}
-        name={activity.name}
-        editing={activity.details}
-        state={activity.state}
-        timestamp={activity.timestamps?.start}
-      />
+      {activity && (
+        <ActivityComponent
+          activity={activity}
+          name={activity.name}
+          editing={activity.details}
+          state={activity.state}
+          timestamp={activity.timestamps?.start}
+        />
+      )}
 
       <Main
         twitter={socials[0].twitter}
