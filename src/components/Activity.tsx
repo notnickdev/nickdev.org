@@ -1,16 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Activity as ActivityType } from "use-lanyard";
-
+import React from 'react';
+import styled from 'styled-components';
+import { Activity as ActivityType } from 'use-lanyard';
 interface ActivityProps {
   activity: ActivityType;
   name: string;
   editing: string | any;
   state: string;
-  timestamp: number | any;
 }
 
-const Activity: React.FunctionComponent<ActivityProps> = (props) => {
+const Activity: React.FunctionComponent<ActivityProps> = props => {
   const ActivityLogoImage = ({ activity }: { activity: ActivityType }) => {
     if (!activity.assets) return null;
 
@@ -27,7 +25,7 @@ const Activity: React.FunctionComponent<ActivityProps> = (props) => {
           alt={activity.assets.large_text}
           width="70"
           style={{
-            borderRadius: "14px",
+            borderRadius: '14px',
           }}
         />
       );
@@ -40,7 +38,7 @@ const Activity: React.FunctionComponent<ActivityProps> = (props) => {
     <Container>
       <ActivityLogoImage activity={props.activity} />
       <Wrapper>
-        <h4 style={{ fontSize: "17px" }}>{props.name}</h4>
+        <h4 style={{ fontSize: '17px' }}>{props.name}</h4>
         <WrapperText>{props.editing}</WrapperText>
         <WrapperText>{props.state}</WrapperText>
       </Wrapper>

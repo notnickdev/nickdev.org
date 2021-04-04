@@ -1,12 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import logo from "../assets/me.png";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import logo from '../assets/me.png';
 
 // Icons
-import { AiOutlineTwitter } from "react-icons/ai";
-import { AiOutlineGithub } from "react-icons/ai";
-import { AiFillLinkedin } from "react-icons/ai";
-import { FaKeybase } from "react-icons/fa";
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { AiOutlineGithub } from 'react-icons/ai';
+import { AiFillLinkedin } from 'react-icons/ai';
+import { FaKeybase } from 'react-icons/fa';
 interface MainProps {
   twitter: string;
   github: string;
@@ -15,46 +16,36 @@ interface MainProps {
   keybase: string;
 }
 
-const Main: React.FunctionComponent<MainProps> = (props) => {
-  const styles = {
-    color: "#695779",
-  };
-
+const Main: React.FunctionComponent<MainProps> = props => {
   return (
     <MainContainer>
       <MainImage src={logo} />
       <Wrapper>
         <MainTitle>
-          Hey! 👋 I'm{" "}
+          Hey! 👋 I'm{' '}
           <span
             style={{
-              color: "#bf30eb",
+              color: '#bf30eb',
             }}
           >
             Nicholas.
           </span>
         </MainTitle>
         <MainDescription>
-          {new Date().getFullYear() - 2003} years old Developer
+          {new Date().getFullYear() - 2003} year Full-Stack Developer
           <br />
-          Contact:{" "}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={props.twitter}
-            style={styles}
-          >
+          Contact:{' '}
+          <StyledLink target="_blank" rel="noreferrer" href={props.twitter}>
             Twitter DM's
-          </a>{" "}
-          -{" "}
-          <a
+          </StyledLink>{' '}
+          -{' '}
+          <StyledLink
             target="_blank"
             rel="noreferrer"
             href={`mailto:${props.email}`}
-            style={styles}
           >
             Email
-          </a>
+          </StyledLink>
         </MainDescription>
         <MainIconsContainer>
           <MainIcon target="_blank" href={props.twitter}>
@@ -70,6 +61,12 @@ const Main: React.FunctionComponent<MainProps> = (props) => {
             <FaKeybase />
           </MainIcon>
         </MainIconsContainer>
+        <div>
+          <StyledLinkNavigation to="/about">About →</StyledLinkNavigation>
+          <StyledLinkNavigation to="/portfolio">
+            Portfolio →
+          </StyledLinkNavigation>
+        </div>
       </Wrapper>
     </MainContainer>
   );
@@ -103,11 +100,35 @@ const MainImage = styled.img`
   border: 4px solid #bf30eb;
   margin-right: 15px;
   border-radius: 50%;
+  margin-top: 15px;
   pointer-events: none;
 `;
 
 const MainIconsContainer = styled.div`
   margin-top: 10px;
+  margin-bottom: 15px;
+`;
+
+const StyledLink = styled.a`
+  color: #695779;
+  font-size: 15px;
+  transition: 0.2s ease all;
+
+  &:hover {
+    color: #bf30eb;
+  }
+`;
+
+const StyledLinkNavigation = styled(Link)`
+  color: #695779;
+  text-decoration: none;
+  margin-right: 40px;
+  font-size: 15px;
+  transition: 0.2s ease all;
+
+  &:hover {
+    color: #bf30eb;
+  }
 `;
 
 const MainIcon = styled.a`

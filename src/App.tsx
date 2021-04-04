@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import { useLanyard } from "use-lanyard";
+import styled from 'styled-components';
+import { useLanyard } from 'use-lanyard';
 
 // Components
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import ActivityComponent from "./components/Activity";
+import Main from './components/Main';
+import Footer from './components/Footer';
+
+import ActivityComponent from './components/Activity';
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,16 +23,16 @@ const PRESENCE = 0;
 
 const App = () => {
   const socials: StateTypes[] | any = [
-    { twitter: "https://twitter.com/notnickdev" },
-    { github: "https://github.com/notnickdev" },
-    { linkedin: "https://www.linkedin.com/in/nicholas-n-5a9187195/" },
-    { email: "thisnotnicholas@gmail.com" },
-    { keybase: "https://keybase.io/nick241" },
+    { twitter: 'https://twitter.com/notnickdev' },
+    { github: 'https://github.com/notnickdev' },
+    { linkedin: 'https://www.linkedin.com/in/nicholas-n-5a9187195/' },
+    { email: 'thisnotnicholas@gmail.com' },
+    { keybase: 'https://keybase.io/nick241' },
   ];
 
-  const { data: lanyard } = useLanyard("463449066672619520");
+  const { data: lanyard } = useLanyard('463449066672619520');
   const activity = lanyard?.activities.find(
-    (activity) => activity.type === PRESENCE
+    activity => activity.type === PRESENCE
   );
 
   return (
@@ -42,7 +43,6 @@ const App = () => {
           name={activity.name}
           editing={activity.details}
           state={activity.state}
-          timestamp={activity.timestamps?.start}
         />
       )}
 
