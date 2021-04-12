@@ -48,16 +48,16 @@ const Main: React.FunctionComponent<MainProps> = props => {
           </StyledLink>
         </MainDescription>
         <MainIconsContainer>
-          <MainIcon target="_blank" href={props.twitter}>
+          <MainIcon target="_blank" href={props.twitter} rel="noreferrer">
             <AiOutlineTwitter />
           </MainIcon>
-          <MainIcon target="_blank" href={props.github}>
+          <MainIcon target="_blank" href={props.github} rel="noreferrer">
             <AiOutlineGithub />
           </MainIcon>
-          <MainIcon target="_blank" href={props.linkedin}>
+          <MainIcon target="_blank" href={props.linkedin} rel="noreferrer">
             <AiFillLinkedin />
           </MainIcon>
-          <MainIcon target="_blank" href={props.keybase}>
+          <MainIcon target="_blank" href={props.keybase} rel="noreferrer">
             <FaKeybase />
           </MainIcon>
         </MainIconsContainer>
@@ -66,6 +66,13 @@ const Main: React.FunctionComponent<MainProps> = props => {
           <StyledLinkNavigation to="/portfolio">
             Portfolio →
           </StyledLinkNavigation>
+          <StyleBlogsLink
+            href="https://notnickdev.medium.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Blogs →
+          </StyleBlogsLink>
         </div>
       </Wrapper>
     </MainContainer>
@@ -120,6 +127,18 @@ const StyledLink = styled.a`
 `;
 
 const StyledLinkNavigation = styled(Link)`
+  color: #695779;
+  text-decoration: none;
+  margin-right: 40px;
+  font-size: 15px;
+  transition: 0.2s ease all;
+
+  &:hover {
+    color: #bf30eb;
+  }
+`;
+
+const StyleBlogsLink = styled.a`
   color: #695779;
   text-decoration: none;
   margin-right: 40px;

@@ -7,7 +7,7 @@ const FooterWrapper = styled.p`
   display: flex;
   bottom: 0;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 13px;
   right: 0;
   left: 0;
   justify-content: center;
@@ -15,7 +15,7 @@ const FooterWrapper = styled.p`
 
 const Footer: React.FunctionComponent = () => (
   <FooterWrapper>
-    Copyright &copy; {new Date().getFullYear()}, Nicholas
+    &copy; design & code by Nicholas, {new Date().getFullYear()}
   </FooterWrapper>
 );
 
