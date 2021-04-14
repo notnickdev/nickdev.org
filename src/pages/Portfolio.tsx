@@ -13,16 +13,18 @@ const Portfolio: React.FunctionComponent<any> = () => {
   const projects = [
     {
       name: 'Watchou',
-      role: 'Developer',
+      role: 'Co-Founder & Developer',
       active: true,
       site: 'https://watchou.com/',
       image: watchouBrandLogo,
+      hex: [63, 140, 255],
     },
     {
-      name: 'Watchou',
+      name: 'Linear',
       role: 'Developer',
-      active: true,
+      active: false,
       site: 'https://watchou.com/',
+      hex: [],
     },
   ];
 
@@ -36,6 +38,7 @@ const Portfolio: React.FunctionComponent<any> = () => {
           active={project.active}
           site={project.site}
           image={project.image}
+          hexCode={project.hex}
         />
       ))}
       <StyledLinkNavigation to="/">← Go back</StyledLinkNavigation>
@@ -56,6 +59,9 @@ const StyledLinkNavigation = styled(Link)`
 
 const Title = styled.h1`
   text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  color: #280f3f;
 `;
 
 export default Portfolio;
