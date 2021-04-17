@@ -8,6 +8,7 @@ import Wrapper from '../components/Wrapper';
 
 // Assets
 import watchouBrandLogo from '../assets/watchou_brand_logo.png';
+import linearBrandLogo from '../assets/linear_brand_logo.png';
 
 const Portfolio: React.FunctionComponent<any> = () => {
   const projects = [
@@ -17,14 +18,19 @@ const Portfolio: React.FunctionComponent<any> = () => {
       active: true,
       site: 'https://watchou.com/',
       image: watchouBrandLogo,
-      hex: [63, 140, 255],
+      size: 240,
+      hex: '3F8CFF',
+      darkHex: '2c62b3',
     },
     {
       name: 'Linear',
       role: 'Developer',
       active: false,
-      site: 'https://watchou.com/',
-      hex: [],
+      site: 'https://github.com/notnickdev/Linear',
+      image: linearBrandLogo,
+      size: 130,
+      hex: 'dd86ff',
+      darkHex: '9b5eb3',
     },
   ];
 
@@ -38,7 +44,9 @@ const Portfolio: React.FunctionComponent<any> = () => {
           active={project.active}
           site={project.site}
           image={project.image}
+          size={project.size}
           hexCode={project.hex}
+          darkHexCode={project.darkHex}
         />
       ))}
       <StyledLinkNavigation to="/">← Go back</StyledLinkNavigation>

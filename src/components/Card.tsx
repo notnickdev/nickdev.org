@@ -7,7 +7,9 @@ interface CardPropsInterface {
   active: boolean;
   site: string;
   image: any;
-  hexCode: number[];
+  hexCode: string;
+  darkHexCode: string;
+  size?: number;
 }
 
 let hexCode = '';
@@ -19,21 +21,26 @@ const Card: React.FunctionComponent<CardPropsInterface> = ({
   site,
   image,
   hexCode,
+  darkHexCode,
+  size,
 }) => {
-  console.log(`rgba(${hexCode[0]} ,${hexCode[1]}, ${hexCode[2]}, 0.96)`);
-  console.log(hexCode[0]);
   return (
     <CardContainer
       style={{
-        backgroundColor: `${hexCode}`,
+        backgroundColor: `#${hexCode}`,
       }}
     >
       <CardImageContainer
         style={{
-          backgroundColor: `rgba(${hexCode[0]} ${hexCode[1]} ${hexCode[2]} 0.96)`,
+          backgroundColor: `#${darkHexCode}`,
         }}
       >
-        <CardImage src={image} alt={name} />
+        <img
+          src={image}
+          alt={name}
+          width={size}
+          style={{ pointerEvents: 'none' }}
+        />
       </CardImageContainer>
       <DescriptionWrapper>
         <CardLabel htmlFor="name">Name:</CardLabel>
@@ -69,11 +76,6 @@ const CardImageContainer = styled.div`
   justify-content: center;
   display: flex;
   width: 320px;
-`;
-
-const CardImage = styled.img`
-  width: 225px;
-  pointer-events: none;
 `;
 
 const CardLabel = styled.label`
