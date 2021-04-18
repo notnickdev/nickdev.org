@@ -9,9 +9,20 @@ import Wrapper from '../components/Wrapper';
 // Assets
 import watchouBrandLogo from '../assets/watchou_brand_logo.png';
 import linearBrandLogo from '../assets/linear_brand_logo.png';
+import visionskyBrandLogo from '../assets/visionsky_brand_logo.png';
 
 const Portfolio: React.FunctionComponent<any> = () => {
   const projects = [
+    {
+      name: 'Visionsky',
+      role: 'Founder & Head Developer',
+      active: true,
+      site: '',
+      image: visionskyBrandLogo,
+      size: 120,
+      hex: 'cf44db',
+      darkHex: '913099',
+    },
     {
       name: 'Watchou',
       role: 'Co-Founder & Developer',
