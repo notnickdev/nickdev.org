@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../Theme/Theme';
 
 interface CardPropsInterface {
   name: string;
@@ -88,15 +89,6 @@ const CardInfoText = styled.h4`
   margin-bottom: 20px;
 `;
 
-const DescriptionContainer = styled.div`
-  float: right;
-  width: 50%;
-  margin: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
-
 const DescriptionWrapper = styled.div`
   /* right: 17rem; */
   position: relative;
@@ -117,6 +109,7 @@ const VisitSiteButton = styled.a`
   right: 0;
   padding: 8px;
   bottom: 2rem;
+  color: ${theme.primary.hex};
   text-align: center;
   height: 40px;
   justify-content: center;
@@ -124,6 +117,11 @@ const VisitSiteButton = styled.a`
   display: flex;
   text-decoration: none;
   width: 110px;
+  transition: 0.2s ease all;
+
+  &:hover {
+    color: ${theme.primary.hexOnHover};
+  }
 `;
 
 export default Card;

@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { Activity as ActivityType } from 'use-lanyard';
+import theme from '../Theme/Theme';
+
+dayjs.extend(relativeTime);
+
 interface ActivityProps {
   activity: ActivityType;
   name: string;
@@ -38,9 +44,20 @@ const Activity: React.FunctionComponent<ActivityProps> = props => {
     <Container>
       <ActivityLogoImage activity={props.activity} />
       <Wrapper>
-        <h4 style={{ fontSize: '17px' }}>{props.name}</h4>
+        <h4
+          style={{
+            fontSize: '16px',
+            color: `${theme.text.default}`,
+            marginBottom: '3px',
+          }}
+        >
+          {props.name}
+        </h4>
         <WrapperText>{props.editing}</WrapperText>
         <WrapperText>{props.state}</WrapperText>
+        <WrapperText>
+          {dayjs(props.activity.timestamps?.start).fromNow(true)} elapsed
+        </WrapperText>
       </Wrapper>
     </Container>
   );
@@ -48,10 +65,10 @@ const Activity: React.FunctionComponent<ActivityProps> = props => {
 
 const Container = styled.div`
   padding: 10px;
-  width: 350px;
-  height: 100px;
+  width: 365px;
+  height: 110px;
   top: 0;
-  background-color: #d3dacf;
+  background-color: ${theme.card.background};
   border-radius: 8px;
   margin-right: 15px;
   margin-top: 15px;
@@ -60,6 +77,10 @@ const Container = styled.div`
   pointer-events: none;
   align-items: center;
   display: flex;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -69,7 +90,9 @@ const Wrapper = styled.div`
 `;
 
 const WrapperText = styled.p`
-  font-size: 15px;
+  font-size: 14px;
+  padding: 1px;
+  color: ${theme.text.default};
 `;
 
 export default Activity;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import theme from '../Theme/Theme';
 
 // Components
 import Card from '../components/Card';
@@ -9,6 +10,7 @@ import Wrapper from '../components/Wrapper';
 // Assets
 import watchouBrandLogo from '../assets/watchou_brand_logo.png';
 import linearBrandLogo from '../assets/linear_brand_logo.png';
+import incognitoBrandLogo from '../assets/incognito_brand_logo.png';
 import visionskyBrandLogo from '../assets/visionsky_brand_logo.png';
 
 const Portfolio: React.FunctionComponent<any> = () => {
@@ -32,6 +34,16 @@ const Portfolio: React.FunctionComponent<any> = () => {
       size: 240,
       hex: '3F8CFF',
       darkHex: '2c62b3',
+    },
+    {
+      name: 'Incognito',
+      role: 'Developer',
+      active: true,
+      site: '',
+      image: incognitoBrandLogo,
+      size: 195,
+      hex: '4f52ff',
+      darkHex: '3739b3',
     },
     {
       name: 'Linear',
@@ -66,13 +78,13 @@ const Portfolio: React.FunctionComponent<any> = () => {
 };
 
 const StyledLinkNavigation = styled(Link)`
-  color: #695779;
+  color: ${theme.primary.hex};
   text-decoration: none;
   font-size: 15px;
   transition: 0.2s ease all;
 
   &:hover {
-    color: #bf30eb;
+    color: ${theme.primary.hexOnHover};
   }
 `;
 
@@ -80,7 +92,7 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: 2rem;
   margin-top: 2rem;
-  color: #280f3f;
+  color: ${theme.primary.hex};
 `;
 
 export default Portfolio;

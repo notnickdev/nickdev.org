@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from '../assets/me.png';
+import theme from '../Theme/Theme';
 
 // Icons
 import { AiOutlineTwitter } from 'react-icons/ai';
@@ -25,14 +26,16 @@ const Main: React.FunctionComponent<MainProps> = props => {
           Hey! 👋 I'm{' '}
           <span
             style={{
-              color: '#bf30eb',
+              background: `-webkit-linear-gradient(70deg, ${theme.primary.hex}, ${theme.primary.hexOnHover})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }}
           >
             Nicholas.
           </span>
         </MainTitle>
         <MainDescription>
-          {new Date().getFullYear() - 2003} year Full-Stack Developer
+          {new Date().getFullYear() - 2003} year Entrepreneur & Developer
           <br />
           Contact:{' '}
           <StyledLink target="_blank" rel="noreferrer" href={props.twitter}>
@@ -92,23 +95,35 @@ const Wrapper = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  color: #280f3f;
+  color: ${theme.primary.hex};
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    font-size: 1.7rem;
+  }
 `;
 
 const MainDescription = styled.p`
   font-size: 15px;
-  color: #533f65;
+  color: ${theme.primary.hex};
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const MainImage = styled.img`
   width: 92px;
   height: 92px;
-  border: 4px solid #bf30eb;
+  border: 4px solid #fc99f3;
   margin-right: 15px;
   border-radius: 50%;
   margin-top: 15px;
   pointer-events: none;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const MainIconsContainer = styled.div`
@@ -117,48 +132,52 @@ const MainIconsContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-  color: #695779;
+  color: ${theme.primary.hex};
   font-size: 15px;
   transition: 0.2s ease all;
 
   &:hover {
-    color: #bf30eb;
+    color: ${theme.primary.hexOnHover};
   }
 `;
 
 const StyledLinkNavigation = styled(Link)`
-  color: #695779;
+  color: ${theme.primary.hex};
   text-decoration: none;
   margin-right: 40px;
   font-size: 15px;
   transition: 0.2s ease all;
 
   &:hover {
-    color: #bf30eb;
+    color: ${theme.primary.hexOnHover};
+  }
+
+  @media (max-width: 480px) {
+    margin-right: 25px;
   }
 `;
 
 const StyleBlogsLink = styled.a`
-  color: #695779;
+  color: ${theme.primary.hex};
   text-decoration: none;
   margin-right: 40px;
   font-size: 15px;
   transition: 0.2s ease all;
 
   &:hover {
-    color: #bf30eb;
+    color: ${theme.primary.hexOnHover};
   }
 `;
 
 const MainIcon = styled.a`
   font-size: 35px;
   margin-right: 10px;
-  color: #bf30eb;
+  color: ${theme.primary.hex};
   cursor: pointer;
   transition: ease 0.2s;
 
   &:hover {
-    color: #9926bc;
+    color: ${theme.primary.hexOnHover};
   }
 `;
 
